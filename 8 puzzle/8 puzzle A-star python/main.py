@@ -14,31 +14,20 @@ rg = 2
 cg = 2
 
 
-#no output for this##############################################
-start1 = np.array([[1,2,0] , [4,5,3] , [7,8,6]])
-r1 = 2
-c1 = 1
-#same goal
 
-
-#11 levels, no output
-start2 = np.array([[2,4,3] , [1,0,8] , [7,6,5]])
+#11 states explored, 22 states generated
+start2 = np.array([[2,8,1] , [0,4,3] , [7,6,5]])
 r2 = 1
-c2 = 1
-#same goal
+c2 = 0
+goal2 = np.array([[1,2,3] , [8,0,4] , [7,6,5]])
+rg2 = 1
+cg2 = 1
 
 
-#trying aryans example
-start4 = np.array([[2,8,1] , [0,4,3] , [7,6,5]])
-r4 = 1
-c4 = 0
-goal4 = np.array([[1,2,3] , [8,0,4] , [7,6,5]])
-rg4 = 1
-cg4 = 1
-
-#create the puzzle
-#puz = Puzzle(start4, r4, c4, goal4, rg4, cg4)
+#create the puzzles
+puz2 = Puzzle(start2, r2, c2, goal2, rg2, cg2)
 puz = Puzzle(start, r, c, goal, rg, cg)
 
 #solve
-puz.solve()
+#puz.solve()
+puz2.solve()
