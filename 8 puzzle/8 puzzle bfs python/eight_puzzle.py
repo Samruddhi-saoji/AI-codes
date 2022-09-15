@@ -83,7 +83,7 @@ class Puzzle :
                     if(start_arr[i] < start_arr[j]) :
                         count = count + 1           
         #tot 36 times
-
+ 
         #if count is even then solvable
         if count%2 == 0 :
             return True

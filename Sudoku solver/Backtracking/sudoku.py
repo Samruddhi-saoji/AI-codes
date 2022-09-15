@@ -1,7 +1,6 @@
 #using backtracking
 
 import numpy as np
-
 class Sudoku:
     #constructor
     def __init__(self, start) :
