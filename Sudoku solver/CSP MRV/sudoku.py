@@ -52,10 +52,6 @@ class Sudoku:
             row = cell[0]
             col = cell[1]
 
-            print(cell)
-            print(self.remval[row][col])
-            print(self.board)
-
             #only possible val
             #num = 1st element is list remval[row][col]
             num = self.remval[row][col][0]
@@ -212,7 +208,7 @@ class Sudoku:
                 if self.isValid(r, c, num) :
                     #fill the cell with num 
                     self.board[r][c] = num
-
+                   
                     #recursive call
                     #continue solving furthur
                     self.solve_by_backtracking()
