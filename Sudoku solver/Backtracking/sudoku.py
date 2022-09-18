@@ -7,6 +7,8 @@ class Sudoku:
         self.board = start
         #board = 9x9 numpy matrix
 
+        self.back_track_count = 0
+
         #print the start state
         print("The puzzle is: ")
         print(start)
@@ -42,11 +44,13 @@ class Sudoku:
                             #created problems
                             #so clear the cell and try again
                             self.board[row][col] = 0
+                            self.back_track_count = self.back_track_count + 1
 
                     return
 
         #coming here means all the cells have been filled
         #print the final answer 
+        print("Number of times backtracking was done: ",self.back_track_count)
         print(self.board)
         print()
 
