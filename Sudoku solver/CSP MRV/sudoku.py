@@ -1,5 +1,4 @@
-#using backtracking
-
+from queue import PriorityQueue
 import numpy as np
 
 class Sudoku:
@@ -12,6 +11,11 @@ class Sudoku:
     #i --> ith cell 
     # oneval[i] = [r,c, num] = indexes of the ith cell , its value
 
+    #priority queue of cells for backtracking
+    pq = PriorityQueue()
+        #priority = shorter rem_val list
+        #element = (priority, (row, col))
+
 
      
     #constructor
@@ -22,6 +26,7 @@ class Sudoku:
 
         #list of remaining values
         self.remval = [[0 for x in range(9)] for y in range(9)]
+        self.back_track_count = 0
 
         #print the start state
         print("The puzzle is: ")
@@ -47,6 +52,10 @@ class Sudoku:
             row = cell[0]
             col = cell[1]
 
+            print(cell)
+            print(self.remval[row][col])
+            print(self.board)
+
             #only possible val
             #num = 1st element is list remval[row][col]
             num = self.remval[row][col][0]
@@ -62,6 +71,8 @@ class Sudoku:
         #check if all cellls have been filled
         if len(self.fixedval) != 81 :
             #now solve remaining by backtracking method
+            print("Total cells fixed before starting backtracking = " , len(self.fixedval)) 
+
             print("\nThe answer is: \n")
             self.solve_by_backtracking()
             return
@@ -177,30 +188,46 @@ class Sudoku:
 
     #retruns ALL POSSIBLE solutions
     def solve_by_backtracking(self) :
-        #for each cell on the board
+        #initialsie the priority queue
+        self.pq.queue.clear()     #########################think of a better approach
+
+        #add each empty cell to pq
         for row in range (0,9) :
             for col in range(0,9) :
-                #if the cell is empty
-                if  self.board[row][col] == 0:
-                    #try putting each val from remval list
-                    for num in self.remval[row][col]:
-                        if self.isValid(row, col, num) :
-                            #fill the cell with num 
-                            self.board[row][col] = num
+                #if the cell is empty and cell not already in queue
+                if  self.board[row][col] == 0 :
+                    #add cell index to priority queu
+                    self.pq.put(( len(self.remval[row][col]) , (row,col) ))
+        
+        #for each cell in order of priority
+        while self.pq.empty() == False:
+            tup = self.pq.get()
+            r = tup[1][0] #row index of cell
+            c = tup[1][1] #col index
 
-                            #recursive call
-                            #continue solving furthur
-                            self.solve_by_backtracking()
+            #solve by backtracking for cell [r][c]
 
-                            #coming here means filling cell with num 
-                            #created problems
-                            #so clear the cell and try again
-                            self.board[row][col] = 0
+            #try putting each val from remval list
+            for num in self.remval[r][c]:
+                if self.isValid(r, c, num) :
+                    #fill the cell with num 
+                    self.board[r][c] = num
 
-                    return
+                    #recursive call
+                    #continue solving furthur
+                    self.solve_by_backtracking()
+
+                    #coming here means filling cell with num 
+                    #created problems
+                    #so clear the cell and try again
+                    self.board[r][c] = 0
+                    self.back_track_count = self.back_track_count + 1
+
+            return
 
         #coming here means all the cells have been filled
         #print the final answer 
+        print("Number of times backtracking was done: ",self.back_track_count)
         print(self.board)
         print()
 
@@ -243,5 +270,4 @@ class Sudoku:
         return True
 
 
-
-
+   
