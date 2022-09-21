@@ -127,6 +127,8 @@ class Puzzle :
                             self.goal_node = child
                             self.goal_found = True
                             return
+                        else:
+                            q.append(child)
 
                     else :
                         #add children to the back of queue
