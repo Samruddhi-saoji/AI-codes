@@ -27,4 +27,4 @@ start2 = np.array([
 #21 filled
 
 print("Tot fixed cells in input is 21.\n")
-puz = Sudoku(start2)
+puz = Sudoku(start)
