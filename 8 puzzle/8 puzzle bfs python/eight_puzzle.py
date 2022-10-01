@@ -20,6 +20,11 @@ class Puzzle :
     #has goal node been generated?
     goal_found = False
 
+    #total number of states generated
+    states_generated = 0
+    #total number of states explored
+    states_explored = 0
+
     #constructor #######################
     #creates the root node of the puzzle
     def __init__(self, start, r, c) :
@@ -65,6 +70,10 @@ class Puzzle :
             print()
             print()
 
+        #print tot states generated
+        print("To reach this solution, total number of states generated is " , self.states_generated)
+        print("To reach this solution, total number of states explored is " , self.states_explored)
+
         
 
     #method to check if the function is solvable
@@ -107,6 +116,9 @@ class Puzzle :
             front:Node = q.popleft()
             #assigning fixed data type to var #var:Type
 
+            #increment the count of states explored
+            self.states_explored += 1
+
             #generate all children of front
             up = front.moveUp()
             down = front.moveDown()
@@ -130,9 +142,15 @@ class Puzzle :
                         else:
                             q.append(child)
 
+                            #increment the count of states generated
+                            self.states_generated = self.states_generated + 1
+
                     else :
                         #add children to the back of queue
-                            q.append(child)       
+                            q.append(child)
+
+                            #increment the count of states generated
+                            self.states_generated = self.states_generated + 1       
 
 
 
