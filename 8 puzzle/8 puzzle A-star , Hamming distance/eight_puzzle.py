@@ -42,6 +42,14 @@ class Puzzle :
         #set the goal board value for node class too
         Node.goal = goal
 
+        #initialise the positions list of the Node class
+        for row in range(0,3) :
+            for col in range(0,3) :
+                num = Node.goal[row][col]
+                Node.positions[num] = (row, col)
+        #now positions list contains the indices of all numbers in the goal board
+
+
 
 
     # methods ###################################################

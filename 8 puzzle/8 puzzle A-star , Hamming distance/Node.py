@@ -6,6 +6,10 @@ class Node :
     #goal board
     goal = np.array([[0,0,0], [0,0,0], [0,0,0]]) #default board
 
+    positions = [0]*9 #position array
+        #positions[i] = (r,c) = array index of number "i" in the goal state
+
+
     #attributes
     board = np.array([[0,0,0], [0,0,0], [0,0,0]]) #default board 
 
@@ -204,27 +208,17 @@ class Node :
 
     #manhattan distance
     def getManhattanDistance(self) :
-        positions = [0]*9 #position array
-        #positions[i] = (r,c) = array index of number "i" in the goal state
-
-        #initialise the positions list
-        for row in range(0,3) :
-            for col in range(0,3) :
-                num = Node.goal[row][col]
-                positions[num] = (row, col)
-        #now positions list contains the indices of all numbers in the goal board
-
         ans = 0 #total manhattan distance count
 
         #calculate answer
         for row in range(0,3) :
             for col in range(0,3) :
-                num = Node.goal[row][col]
+                num = self.board[row][col]
 
                 #num = 0 ---> empty tile
                 #dont calculate manhattan dist for empty tile
                 if num != 0 :
-                    tup = positions[num] #(r,c)
+                    tup = Node.positions[num] #(r,c)
                     goal_r = tup[0]
                     goal_c = tup[1]
 
