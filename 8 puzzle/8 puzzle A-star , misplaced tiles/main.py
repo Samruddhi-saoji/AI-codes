@@ -30,4 +30,4 @@ puz = Puzzle(start, r, c, goal, rg, cg)
 
 #solve
 #puz.solve()
-puz.solve()
+puz2.solve()
