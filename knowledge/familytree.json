@@ -1,0 +1,35 @@
+{
+    "father":
+    [
+    {"Phineas Nigellus" : "Cygnus I"},
+    {"Cygnus I" : "Pollux"},
+    {"Pollux" : "Walburga"},
+    {"Pollux" : "Alphard"},
+    {"Pollux" : "Cygnus"},
+    {"Orion" : "Sirius"}, 
+    {"Orion" : "Regulus"},
+    {"Cygnus": "Bellatrix"},
+    {"Cygnus": "Andromeda"},
+    {"Cygnus": "Narcissa"},
+    {"Lucius Malfoy": "Draco Malfoy"},
+    {"Ted Tonks": "Nymphadora Tonks"},
+    {"Remus Lupin": "Ted Lupin"}
+    ],
+
+    "mother":
+    [
+    {"Ursula Flint": "Cygnus I"},
+    {"Violetta Bulstrode": "Pollux"},
+    {"Irma Crabbe": "Walburga"},
+    {"Irma Crabbe": "Alphard"},
+    {"Irma Crabbe": "Cygnus"},
+    {"Walburga": "Sirius"},
+    {"Walburga": "Regulus"},
+    {"Druella Rosier": "Bellatrix"},
+    {"Druella Rosier": "Andromeda"},
+    {"Druella Rosier": "Narcissa"},
+    {"Andromeda": "Nymphadora Tonks"},
+    {"Nymphadore": "Ted Lupin"},
+    {"Narcissa": "Draco Malfoy"}
+    ]
+}
